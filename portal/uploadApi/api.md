@@ -17,4 +17,4 @@ _The API notebooks are all executable! Hit "enter" in any code cell to execute i
 
 This portal and its contents are not affiliated with GMail. They are, however, useful for working with, and learning about, the GMail Media Upload API.
 
-The official developer API portal for GMail is at <a href="https://developers.google.com/gmail/api/v1/reference/s.box.com/" target="_blank">https://developers.google.com/gmail/api/v1/reference/</a>
+The official developer API portal for GMail is at <a href="https://developers.google.com/gmail/api/v1/reference/" target="_blank">https://developers.google.com/gmail/api/v1/reference/</a>
