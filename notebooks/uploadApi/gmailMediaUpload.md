@@ -25,7 +25,7 @@ CLIENT_SECRET = prompt("Please, enter client Secret of your GMail application")
 
 ```javascript
 // Read about the GMail Upload API at https://anypoint.mulesoft.com/apiplatform/popular/admin/#/dashboard/apis/7974/versions/8138/contracts
-API.createClient('clientUpload', '/apiplatform/repository/public/organizations/30/apis/7974/versions/8138/definition');
+API.createClient('clientUpload', '#REF_TAG_DEFENITION');
 ```
 
 ```javascript

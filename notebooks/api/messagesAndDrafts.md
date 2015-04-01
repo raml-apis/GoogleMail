@@ -31,7 +31,7 @@ RAW_MESSAGE = "TUlNRS1WZXJzaW9uOiAxLjANClJlY2VpdmVkOiBieSAxMC42NC45LjIzMiB3aXRoI
 
 ```javascript
 // Read about the GMail RAML API at https://anypoint.mulesoft.com/apiplatform/popular/admin/#/dashboard/apis/7881/versions/8035/contracts
-API.createClient('client', '/apiplatform/repository/public/organizations/30/apis/7881/versions/8035/definition');
+API.createClient('client', '#REF_TAG_DEFENITION');
 ```
 
 ```javascript
