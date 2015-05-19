@@ -66,6 +66,10 @@
             "size" : {
               "type" : "number" ,
               "required" : false
+            },
+            "attachmentId" : {
+              "type" : "string" ,
+              "required" : false
             }
           }
         } ,
@@ -109,6 +113,10 @@
                   "properties" : {
                     "size" : {
                       "type" : "number" ,
+                      "required" : false
+                    },
+                    "attachmentId" : {
+                      "type" : "string",
                       "required" : false
                     }
                   }
