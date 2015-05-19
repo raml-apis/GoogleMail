@@ -19,6 +19,7 @@ schemas:
   - drafts: !include schemas/drafts-schema.json
   - draftCreate: !include schemas/draftCreate-schema.json
   - draft: !include schemas/draft-schema.json
+  - draftSend: !include schemas/draftSend-schema.json
   - draftFull: !include schemas/draftFull-schema.json
   - history: !include schemas/history-schema.json
   - labels: !include schemas/labels-schema.json
@@ -199,6 +200,10 @@ securedBy: [ oauth_2_0 ]
       post: 
         is: [ uploadMetadata ]
         description: "Metadata-only request. Sends the specified, existing draft to the recipients in the 'To', 'Cc', and 'Bcc' headers."
+        body:
+          application/json:
+            example: !include examples/draftSend-example.json
+            schema: draftSend
         responses: 
           200: 
             body: 
@@ -265,17 +270,20 @@ securedBy: [ oauth_2_0 ]
         responses: 
           200: 
             body: 
-              application/json: 
+              application/json:
+                schema: label
                 example: !include examples/label-example.json
       put: 
         description: Updates the specified label.
         body: 
-          application/json: 
+          application/json:
+            schema: labelCreate
             example: !include examples/labelCreate-example.json
         responses: 
           200: 
             body: 
-              application/json: 
+              application/json:
+                schema: label
                 example: !include examples/label-example.json
   /threads: 
     get: 
