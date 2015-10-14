@@ -1,0 +1,295 @@
+#%RAML 1.0 Library
+title: Gmail types
+types:
+  ErrorItem:
+    type: object
+    properties:
+      domain?: string
+      reason?: string
+      message?: string
+      locationType?: string
+      location?: string
+    example:
+      domain : "global"
+      reason : "authError"
+      message : "Invalid Credentials"
+      locationType : "header"
+      location : "Authorization"
+  Error:
+    type: object
+    properties:
+      error?:
+        type: object
+        properties:
+          errors?: ErrorItem[]
+          code?: number
+          message?: string
+    example:
+      error:
+        errors:
+          - domain : "global"
+            reason : "authError"
+            message : "Invalid Credentials"
+            locationType : "header"
+            location : "Authorization"
+        code : 401
+        message : "Invalid Credentials"
+  Header:
+    type: object
+    properties:
+      name?: string
+      value?: string
+  Message:
+    type: object
+    properties:
+      id?: string
+      threadId?: string
+      labelIds?: string[]
+      snippet?: string
+      historyId?: string
+      payload?:
+        type: object
+        properties:
+          mimeType?: string
+          filename?: string
+          headers?: Header[]
+          body?:
+            type: object
+            properties:
+              size?: number
+              data?: string
+          parts?: Message[]
+      sizeEstimate?: number
+    example:
+      id : "146df2af95fffcf2"
+      threadId : "146df2af95fffcf2"
+      labelIds :
+        - "SENT"
+  Messages:
+    type: object
+    properties:
+      messages?: Message[]
+    example:
+      messages:
+        - id : "146df2af95fffcf2"
+          threadId : "146df2af95fffcf2"
+          labelIds :
+            - "SENT"
+  MessageCreate:
+    type: object
+    properties:
+      threadId?: string
+      raw?: string
+    example:
+      threadId : "146df2af95fffcf2"
+      raw : "ZXJzaW___NOT_A_VALID_VALUE___zMiB3a"
+  ModifyLabels:
+    type: object
+    properties:
+      addLabelIds?: string[]
+      removeLabelIds?: string[]
+    example:
+      addLabelIds :
+         - "TRASH"
+      removeLabelIds :
+         - "DRAFT"
+  Attachment:
+    type: object
+    properties:
+      data?: string
+      size?: number
+    example:
+      data : "VGhpcy ... va3Mu"
+      size : 60
+  Draft:
+    type: object
+    properties:
+      id?: string
+      message?: Message
+    example:
+      id : "r3089453976128281045"
+      message :
+        id : "146df5663490d72f"
+        threadId : "146df5663490d72f"
+        labelIds :
+          - "DRAFT"
+  Drafts:
+    type: object
+    properties:
+      drafts?: Draft[]
+    example:
+      drafts:
+        - id : "r3089453976128281045"
+          message :
+            id : "146df5663490d72f"
+            threadId : "146df5663490d72f"
+  DraftCreate:
+    type: object
+    properties:
+      raw?: string
+    example:
+      raw : "ZXJzaW___NOT_A_VALID_VALUE___zMiB3a"
+  DraftSend:
+    type: object
+    properties:
+      ok?: string
+  HistoryItem:
+    type: object
+    properties:
+      id?: string
+      messages?: Message[]
+    example:
+      id: "531980"
+      messages :
+        - id : "146cdf52784d1e1d"
+          threadId : "146cdf1a14adfb6b"
+  History:
+    type: object
+    properties:
+      history?: HistoryItem[]
+    example:
+      history:
+        - id: "531980"
+          messages :
+            - id : "146cdf52784d1e1d"
+              threadId : "146cdf1a14adfb6b"
+  Label:
+    type: object
+    properties:
+      id?: string
+      labelListVisibility?: string
+      messageListVisibility?: string
+      name?: string
+      type?: string
+    example:
+      id : "Label_4"
+      labelListVisibility : "labelShow"
+      messageListVisibility : "show"
+      name : "API_Notebook"
+      type : "user"
+  Labels:
+    type: object
+    properties:
+      labels: Label[]
+    example:
+      labels:
+        - id : "Label_4"
+          labelListVisibility : "labelShow"
+          messageListVisibility : "show"
+          name : "API_Notebook"
+          type : "user"
+  LabelCreate:
+    type: object
+    properties:
+      labelListVisibility?: string
+      messageListVisibility?: string
+      name?: string
+    example:
+      labelListVisibility : "labelShow"
+      messageListVisibility : "show"
+      name : "API_Notebook"
+  ProfileResponse:
+    type: object
+    properties:
+      emailAddress?: string
+      messagesTotal?: string
+      threadsTotal?: string
+      historyId?: string
+    example:
+      emailAddress : "string"
+      messagesTotal : "integer"
+      threadsTotal : "integer"
+      historyId : "unsigned long"
+  Thread:
+    type: object
+    properties:
+      id?: string
+      historyId?: string
+      messages?: Message[]
+    example:
+      id : "146df5d64e5cb7dc"
+      historyId : "535370"
+      messages :
+        - id : "146df5d64e5cb7dc"
+          threadId : "146df5d64e5cb7dc"
+          labelIds :
+            - "SENT"
+          snippet : ""
+          historyId : "535370"
+          payload :
+            mimeType : "text/plain"
+            filename : ""
+            headers :
+              - name : "Received"
+                value : "from 833522106252-kj93b6c68h8dq0438mjuasrvm6bsfjvm.apps.googleusercontent.com named unknown by gmailapi.google.com with HTTPREST; Fri, 27 Jun 2014 15:06:18 -0700"
+              - name : "Date"
+                value : "Fri, 27 Jun 2014 15:06:18 -0700"
+              - name : "Message-Id"
+                value : "<CAEzS4YC_gro+vJ8aoiccD8emmF=KkBjG12mXOh53+wWsR9YQVQ@mail.gmail.com>"
+              - name : "From"
+                value : "someaccount@gmail.com"
+            body :
+              size : 0
+              data : ""
+          sizeEstimate : 331
+  Threads:
+    type: object
+    properties:
+      threads: Thread[]
+    example:
+      threads:
+        - id : "146df5d64e5cb7dc"
+          historyId : "535370"
+          messages :
+            - id : "146df5d64e5cb7dc"
+              threadId : "146df5d64e5cb7dc"
+              labelIds :
+                - "SENT"
+              snippet : ""
+              historyId : "535370"
+              payload :
+                mimeType : "text/plain"
+                filename : ""
+                headers :
+                  - name : "Received"
+                    value : "from 833522106252-kj93b6c68h8dq0438mjuasrvm6bsfjvm.apps.googleusercontent.com named unknown by gmailapi.google.com with HTTPREST; Fri, 27 Jun 2014 15:06:18 -0700"
+                  - name : "Date"
+                    value : "Fri, 27 Jun 2014 15:06:18 -0700"
+                  - name : "Message-Id"
+                    value : "<CAEzS4YC_gro+vJ8aoiccD8emmF=KkBjG12mXOh53+wWsR9YQVQ@mail.gmail.com>"
+                  - name : "From"
+                    value : "someaccount@gmail.com"
+                body :
+                  size : 0
+                  data : ""
+              sizeEstimate : 331
+  DraftFull:
+    type: object
+    properties:
+      id?: string
+      message?: Message
+    example:
+      id : "r3089453976128281045"
+      message:
+        id : "146df5d64e5cb7dc"
+        threadId : "146df5d64e5cb7dc"
+        labelIds :
+          - "SENT"
+        snippet : ""
+        historyId : "535370"
+        payload :
+          mimeType : "text/plain"
+          filename : ""
+          headers :
+            - name : "Received"
+              value : "from 833522106252-kj93b6c68h8dq0438mjuasrvm6bsfjvm.apps.googleusercontent.com named unknown by gmailapi.google.com with HTTPREST; Fri, 27 Jun 2014 15:06:18 -0700"
+            - name : "Date"
+              value : "Fri, 27 Jun 2014 15:06:18 -0700"
+            - name : "Message-Id"
+              value : "<CAEzS4YC_gro+vJ8aoiccD8emmF=KkBjG12mXOh53+wWsR9YQVQ@mail.gmail.com>"
+            - name : "From"
+              value : "someaccount@gmail.com"
+          body :
+            size : 0
+            data : ""
+        sizeEstimate : 331
