@@ -96,7 +96,7 @@ securedBy: [ oauth_2_0 ]
             200:
               body:
                 application/json:
-                  example: !include examples/message-example.json
+                  type: types.Message
       /trash:
         type: base
         post:
@@ -105,7 +105,7 @@ securedBy: [ oauth_2_0 ]
             200:
               body:
                 application/json:
-                  example: !include examples/message-example.json
+                  type: types.Message
       /attachments/{id}:
         type: base
         get:
