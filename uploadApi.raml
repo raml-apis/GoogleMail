@@ -3,14 +3,14 @@ title: GMail Media Upload
 version: v1
 baseUri: https://www.googleapis.com/upload/gmail/{version}/users
 securitySchemes:
-  - oauth_2_0: !include securitySchemes/oauth_2_0.raml
+  oauth_2_0: !include securitySchemes/oauth_2_0.raml
 uses:
-  types: !include types.raml
+  types: types.raml
 resourceTypes:
-  - baseUpload: !include resourceTypes/baseUpload.raml
+  baseUpload: !include resourceTypes/baseUpload.raml
 traits:
-  - uploadMedia: !include traits/uploadMedia.raml
-  - commonParams: !include traits/commonParams.raml
+  uploadMedia: !include traits/uploadMedia.raml
+  commonParams: !include traits/commonParams.raml
 securedBy: [ oauth_2_0 ]
 /{userId}:
   /messages:

@@ -4,19 +4,19 @@ version: v1
 baseUri: https://www.googleapis.com/gmail/{version}/users
 mediaType: application/json
 securitySchemes:
-  - oauth_2_0: !include securitySchemes/oauth_2_0.raml
+  oauth_2_0: !include securitySchemes/oauth_2_0.raml
 uses:
-  types: !include types.raml
+  types: types.raml
 schemas:
-  - messageFull: types.Message
+  messageFull: types.Message
 resourceTypes:
-  - base: !include resourceTypes/base.raml
+  base: !include resourceTypes/base.raml
 traits:
-  - formatted: !include traits/formatted.raml
-  - query: !include traits/query.raml
-  - paginated: !include traits/paginated.raml
-  - uploadMetadata: !include traits/uploadMetadata.raml
-  - commonParams: !include traits/commonParams.raml
+  formatted: !include traits/formatted.raml
+  query: !include traits/query.raml
+  paginated: !include traits/paginated.raml
+  uploadMetadata: !include traits/uploadMetadata.raml
+  commonParams: !include traits/commonParams.raml
 securedBy: [ oauth_2_0 ]
 /{userId}:
   /messages:
